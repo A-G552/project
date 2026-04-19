@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang = "en">
+    <head>
+        <title>
+            Payment Details
+        </title>
+        <link rel="stylesheet" href = "../CSS/styling.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <header>
+            <a href = "index.html">
+                <img src = "../Images/logo.png" alt = "Company Logo" style = "width: 50px; height: auto">
+            </a>
+            <nav>
+                <a href="basket.html">
+                    Basket
+                </a> 
+                <a href="contact.html">
+                    Contact
+                </a> 
+                <a href="wishlist.html">
+                    Wish List
+                </a>  
+            </nav> 
+        </header>
+
+       <h2 style = "text-align: center;">
+            Payment Details
+       </h2>
+
+       <!--Payment details styling-->
+        <div class = "payment-grid">
+            <div class = "payment-card">
+                <h4>
+                    Name:
+                </h4>
+                <textarea id = "searchInput" placeholder = "Enter your name..." 
+                style = "width: 200px; height: 30px; text-align: left; vertical-align: text-top; resize: none;"></textarea>
+
+                <h4>
+                    Surname:
+                </h4>
+                <textarea id = "searchInput" placeholder = "Enter your surname..." 
+                style = "width: 200px; height: 30px; text-align: left; vertical-align: text-top; resize: none;"></textarea>
+
+                <h4>
+                    Email:
+                </h4>
+                <textarea id = "searchInput" placeholder = "Enter your email address..." 
+                style = "width: 400px; height: 30px; text-align: left; vertical-align: text-top; resize: none;"></textarea>
+                
+                <h4>
+                    Address:
+                </h4>
+                <textarea id = "searchInput" placeholder = "Enter home your address..." 
+                style = "width: 400px; height: 50px; text-align: left; vertical-align: text-top; resize: none;"></textarea>
+
+                <h4>
+                    Phone Number:
+                </h4>
+                <textarea id = "searchInput" placeholder = "Enter your phone number..." 
+                style = "width: 200px; height: 30px; text-align: left; vertical-align: text-top; resize: none;"></textarea>
+
+                <h4>
+                    Card Number:
+                </h4>
+                <textarea id = "searchInput" placeholder = "Enter your phone number..." 
+                style = "width: 200px; height: 30px; text-align: left; vertical-align: text-top; resize: none;"></textarea>
+
+                <h4>
+                    Donate plastic?
+                </h4>
+                <label>
+                    <input type = "checkbox" id = checkboxId>Donate
+                </label>
+
+                <div id = "donationId">
+                    <h4>
+                        Estimated Weight of Donation:
+                    </h4>
+                    <textarea id = "weightId" placeholder = "Amount in kg..." 
+                    style = "width: 200px; height: 30px; text-align: left; vertical-align: text-top; resize: none;"></textarea>
+
+                    <p id = "carbin-emission"></p>
+                </div>
+
+                <br>
+                <a href = "payment-details.html" class = "donate-button">
+                    Make Payment
+                </a>
+            </div>
+        </div>
+        <script>
+            const weight = document.getElementById("weightId");
+            const carbonEmission = document.getElementById("carbin-emission");
+            const checkbox = document.getElementById("checkboxId");
+            const donationInformation = document.getElementById("donationId");
+            
+            donationInformation.style.display = "none";
+            //display donation information when checkbox is checked
+            checkbox.addEventListener("change", () => {
+                donationInformation.style.display = checkbox.checked ? "block":"none";
+            });
+            //allows users to see carbon emission prevention value in real time
+            weight.addEventListener("input", () => {
+                const value = parseFloat(weight.value);
+                const emissionFactor = 2;
+                const emission = 2*value;
+                carbonEmission.textContent = `You prevented ${emission}kg worth of carbon emission! Well done!`;
+            });
+        </script>
+    </body>
+</html>

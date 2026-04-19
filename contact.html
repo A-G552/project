@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang = "en">
+    <head>
+        <title>
+            Contact Page
+        </title>
+        <link rel="stylesheet" href = "../CSS/styling.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <header>
+            <a href = "index.html">
+                <img src = "../Images/logo.png" alt = "Company Logo" style = "width: 50px; height: auto">
+            </a>
+
+            <nav>
+                <a href="basket.html">
+                    Basket
+                </a> 
+                <a href="checkout.html">
+                    Checkout
+                </a> 
+                <a href="contact.html">
+                    Contact
+                </a> 
+                <a href="wishlist.html">
+                    Wish List
+                </a>  
+            </nav> 
+        </header>
+
+        <section style = "background-color: rgb(109, 192, 154); padding: 40px 40px; text-align: center">
+            <h2>
+                Customer Service and Support
+            </h2>
+            <p style = "font-size: 20px;">
+                Search for possible solutions that may answer your query
+            </p>
+            <form>
+                <input type = "text" id = "searchInput" placeholder = "Search for solution..." class = "searchbar">
+            </form>
+        </section>  
+        
+        <section style = "margin: 25px">
+            <h2>
+                How Can You Contact Us?
+            </h2>
+
+            <p>
+                Customers can contact us by using the solution finder above or they can contact us on:
+            </p>
+            <ul>
+                <li>www.SustainableStore@gmail.com</li>
+                <li>Call 0123456789</li>
+            </ul>
+            <p>
+                Or customers can use the query submission tool below.
+            </p>
+            
+            <form>
+                <textarea id = "searchInput" placeholder = "Type your query here..." 
+                style = "width: 400px; height: 150px; text-align: left; vertical-align: text-top; resize: none;"></textarea>
+            </form> 
+            <br>
+
+            <a href = "" class = "submit-button">
+                Submit query
+            </a>
+
+            <h2>
+                Frequently Asked Questions:
+            </h2>
+            <p>
+                <b>How long do you have to wait for orders to be delivered?</b><br>
+                Customers can find there delivery date in the order confirmation email sent to customers upon purchases.
+            </p>
+            <p>
+                <b>Can we request refunds?</b><br>
+                Customers can only request refunds until 48 hours after the order confirmation email is sent. 
+                After this duration, customers are unable to request refunds.
+            </p>
+            <p>
+                <b>What happens if my order arrives damaged?</b><br>
+                If orders are arrived damaged, customers have to provide proof that the damage was not caused by them. 
+                If the customer successfully proves that they did not cause the damage, they can either request a full refund 
+                or a new product. 
+            </p>
+        </section>
+
+        <footer>
+            <div>
+                <h3>
+                    Get to Know Us
+                </h3>
+                <nav>
+                    <a href = "about.html">
+                        About Us
+                    </a>
+                </nav>
+            </div>
+            <div>
+                <h3>
+                    More About Plastic Collection
+                </h3>
+                <nav>
+                    <a href = "collection.html">
+                        Plastic Collection Information
+                    </a>
+                </nav>
+            </div>
+        </footer>
+
+        <script>
+            const searchInput = document.getElementById("searchInput");
+
+            searchInput.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") { //user presses Enter
+                    e.preventDefault();   //prevent default form submit
+                    //Gets text from search
+                    const text = searchInput.value.toLowerCase();
+
+                    //Converts text to a format that can be used in a URL
+                    const query = encodeURIComponent(text);
+                    //changes URL to include the query
+                    window.location.href = `search-results.html?q=${query}`;
+                }
+            });
+        </script>
+    </body>
+</html>

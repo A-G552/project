@@ -1,0 +1,320 @@
+/*body style to set background colour and margin*/
+body {
+    margin: 0; 
+    padding: 0; 
+    background-color: rgb(234, 232, 232);
+    font-family: Arial ;
+}
+
+header {
+    background-color: rgb(20, 104, 66); 
+    padding: 20px 40px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.searchbar {
+    width: 50%;
+    height: 40px;
+}
+
+footer {
+    background-color: rgb(109, 192, 154); 
+    padding: 30px 30px; 
+    text-align: left; 
+    justify-content: space-evenly; 
+    display: flex
+}
+
+footer nav {
+    font-weight: lighter;
+}
+
+footer nav a {
+    text-decoration: none;
+    color: black;
+    padding: 8px 12px; /* horizontal spacing */
+}
+
+footer nav a:hover {
+    color: lightblue;
+    cursor: pointer;
+}
+
+/*navigation style to set background colour, padding and margin*/
+
+nav {
+    font-weight: bold; 
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding: 8px 12px; /* horizontal spacing */
+    
+}
+
+nav a:hover { /*navigation link changes colour when cursor hovers over it*/
+    color: lightblue;
+    cursor: pointer;
+}
+
+/*product layout*/
+.product-grid {
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 40px;
+    justify-content: center;
+}
+
+.checkout-product-grid {
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 40px;
+    justify-content: left;
+    margin: 40px;
+}
+
+.product-card {
+    background-color: white; 
+    padding: 20px; 
+    border-radius: 8px; 
+    text-align: left; 
+    flex: 1 1 250px; 
+    max-width: 300px;
+    display: flex; 
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.product-button-card {
+    background-color: white; 
+    padding: 20px; 
+    border-radius: 8px; 
+    text-align: left;  
+    max-width: 160px;
+    min-width: 160px;
+    max-height: 275px;
+    display: flex; 
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.product-card img {
+    width: 80%; 
+    max-width: 250px;
+    height: auto; 
+    object-fit: fill;
+    margin: 0 auto
+}
+
+.product-info {
+    margin-top: auto
+}
+
+.product-original-price {
+    text-decoration: line-through; 
+    color: grey; 
+    margin: 15px
+}
+
+.button {
+    width: 160px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    text-decoration: none;
+    color: black;
+    border: 1px solid;
+    border-color: black;
+    border-radius: 8px;
+    background-color: rgb(235, 233, 233);
+    align-items: center;
+    justify-content: center;
+}
+
+.button:hover {
+    background-color: rgb(160, 247, 208);
+}
+
+.donate-button {
+    width: 150px;
+    height: 25px;
+    cursor: pointer;
+    display: flex;
+    text-decoration: none;
+    color: black;
+    border: 1px solid;
+    border-color: black;
+    background-color: rgb(160, 247, 208);
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.donate-button:hover {
+    background-color: rgb(20, 104, 66);
+    color: white;
+}
+
+.submit-button {
+    width: 150px;
+    height: 25px;
+    cursor: pointer;
+    display: flex;
+    text-decoration: none;
+    color: black;
+    border: 1px solid;
+    border-color: black;
+    background-color: rgb(160, 247, 208);
+    align-items: center;
+    justify-content: center;
+}
+
+.submit-button:hover {
+    background-color: rgb(20, 104, 66);
+    color: white;
+}
+
+.payment-grid {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center;
+}
+
+.payment-card {
+    background-color: white; 
+    padding: 20px; 
+    border-radius: 8px; 
+    text-align: left;
+    flex: 1 1 250px; 
+    width: 300px;
+    max-width: 500px;
+    display: flex; 
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.rating {
+  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+}
+
+.stars {
+  color: gold;
+  letter-spacing: 2px;
+  user-select: none;
+}
+
+.rating-value, .rating-count {
+  font-size: 14px;
+  color: #334;
+}
+
+.description-container {
+    background-color: white;
+    display: flex;
+    width: 800px;
+    margin: 20px;
+    justify-self: center;
+}
+
+.description {
+    margin: 20px;
+    text-align: left;
+}
+
+/*slightly larger screens*/
+@media only screen and (max-width: 750px) {
+    .description-container {
+        flex-direction: column;
+        width: 75%;
+        margin: 10px;
+    }
+    .description {
+        margin: 10px;
+    }
+}
+
+/*phone dimensions*/
+@media only screen and (max-width: 600px) {
+    /* CSS rules for screens smaller than 600px */
+    h2 {
+        font-size: 20px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: left;
+        gap: 7px;
+        padding: 10px 20px
+    }
+
+    .searchbar {
+        width: 75%;
+        height: 25px;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        font-size: 12px
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .product-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .checkout-product-grid {
+        flex-direction: column;
+        margin: 10px;
+        gap: 20px;
+    }
+
+    .product-card {
+        width: 90%;
+    }
+
+    .product-button-card {
+        width: 90%;
+    }
+
+    .product-card img {
+        width: 100%;
+    }
+
+    .button {
+        width: 100%;
+    }
+
+    .submit-button {
+        width: 100%;
+    }
+
+    .payment-card {
+        width: 90%;
+    }
+
+    .description-container {
+        flex-direction: column;
+        width: 75%;
+        margin: 10px;
+    }
+
+    .description {
+        margin: 10px;
+    }
+}

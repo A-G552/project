@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang = "en">
+    <head>
+        <title>
+            Basket
+        </title>
+        <link rel="stylesheet" href = "../CSS/styling.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <header>
+            <a href = "index.html">
+                <img src = "../Images/logo.png" alt = "Company Logo" class = "searchbar">
+            </a>
+            <nav>
+                <a a id = "checkout-nav-id" href = "">
+                    Checkout
+                </a>  
+                <a href="contact.html">
+                    Contact
+                </a> 
+                <a a id = "wishlist-nav-id" href = "">
+                    Wish List
+                </a>  
+            </nav> 
+        </header>
+
+        <section style = "background-color: rgb(109, 192, 154); padding: 20px 40px; text-align: center">
+            <form>
+                <input type = "text" id = "searchInput" placeholder = "Search for a product..." style = "width: 450px; height: 40px">
+            </form>
+        </section>
+
+        <h2 style = "text-align: center;">
+            Current Basket
+        </h2>
+
+        <p id = "empty-basket" style = "justify-content: center; color: grey">
+            Basket is currently empty...
+        </p>
+
+        <div class = "product-grid">
+            <div class = "product-card">
+                <img src = "" id = "product-image">
+                <div class = "product-info">
+                    <h3 id = "product-name"></h3>
+                </div>
+            </div>
+
+            <div class = "product-button-card">
+                <h4>
+                    Ready to Pay?
+                </h4>
+                <Strong>
+                    <u>Total:</u>
+                </Strong>
+                <span id = "product-price"></span>
+                <a id = "checkout-id" href = "" class = "button">
+                    Proceed to Checkout
+                </a>
+                <a id = "wishlist-id" href = "" class = "button">
+                    Move to Wish List
+                </a>
+                <a href = "" class = "button">
+                    Remove from Basket
+                </a>
+            </div>
+        </div>
+
+        <script>
+            const products = {
+                1: {
+                    name: "Wooden Toothbrush",
+                    price: "R100.00",
+                    image: "../Images/toothbrush.png",
+                    description: "Reusable toothbrush that is made out of wood."
+                },
+
+                2: {
+                    name: "Metal Waterbottle",
+                    price: "R500.00",
+                    image: "../Images/waterbottle.png",
+                    description: "Metal waterbottle with a sleek wooden finish."
+                },
+
+                3: {
+                    name: "Wooden Utensil Set",
+                    price: "R105.00",
+                    image: "../Images/utensils.png",
+                    description: "Reusable and dishwasher friendly wooden utensils."
+                },
+
+                4: {
+                    name: "Bamboo Chopsticks Set",
+                    price: "R100.00",
+                    image: "../Images/chopsticks.png",
+                    description: "Reusable bamboo chopsticks."
+                },
+
+                5: {
+                    name: "Soy Candle",
+                    price: "R500.00",
+                    image: "../Images/candle.png",
+                    description: "Vanilla scented soy candle. Perfect as an air freshener."
+                },
+
+                6: {
+                    name: "Reusable Produce Bags",
+                    price: "R105.00",
+                    image: "../Images/bags.png",
+                    description: "Reusable produce bags that are perfect for grocery shopping."
+                },
+
+                7: {
+                    name: "Barrel Couch",
+                    price: "R1000.00",
+                    image: "../Images/couch.png",
+                    description: "Barrel that was repurposed to be a couch."
+                },
+
+                8: {
+                    name: "Tote Bag",
+                    price: "R250.00",
+                    image: "../Images/totebag.png",
+                    description: "Tote bag made from upcycled material."
+                },
+
+                9: {
+                    name: "Desk Organizer",
+                    price: "R175.00",
+                    image: "../Images/organizer.png",
+                    description: "Upcycled plastic that was repurposed to be a desk organizer."
+                },
+            };
+        
+            const parameters = new URLSearchParams(window.location.search);
+            const id = parameters.get("id");
+            const product = products[id];
+
+            const emptyBasket = document.getElementById("empty-basket");
+
+            //variable that finds the CSS element specified
+            const productCard = document.querySelector(".product-card");
+            const buttonCard = document.querySelector(".product-button-card");
+
+            if(!product || !id) {
+                //styling methods
+                emptyBasket.style.display = "flex";
+                productCard.style.display = "none";
+                buttonCard.style.display = "none";
+            }
+            else {
+                document.getElementById("product-image").src = product.image;
+                document.getElementById("product-name").textContent = product.name;
+                document.getElementById("product-price").textContent = product.price;
+                
+                //AI idea to use ID's to change URL was used
+                /*
+                creates a dynamic link to wishlist/checkout.html. It does this by appending the id of the current product to the link allowing it to
+                dynamically change the product within the wish list/checkout after clicking their respective buttons. 
+                */
+                document.getElementById("wishlist-id").href = `wishlist.html?id=${id}`;
+                document.getElementById("wishlist-nav-id").href = `wishlist.html?id=${id}`;
+                document.getElementById("checkout-id").href = `checkout.html?id=${id}`;
+                document.getElementById("checkout-nav-id").href = `checkout.html?id=${id}`;
+                emptyBasket.style.display = "none";
+            }
+        </script>
+
+        <script>
+            const searchInput = document.getElementById("searchInput");
+
+            searchInput.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") { //user presses Enter
+                    e.preventDefault();   //prevent default form submit
+                    //Gets text from search
+                    const text = searchInput.value.toLowerCase();
+
+                    //Converts text to a format that can be used in a URL
+                    const query = encodeURIComponent(text);
+                    //changes URL to include the query
+                    window.location.href = `search-results.html?q=${query}`;
+                }
+            });
+        </script>
+    </body>
+</html>

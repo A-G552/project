@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang = "en">
+    <head>
+        <title>
+            Checkout
+        </title>
+        <link rel="stylesheet" href = "../CSS/styling.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <header>
+            <a href = "index.html">
+                <img src = "../Images/logo.png" alt = "Company Logo" style = "width: 50px; height: auto">
+            </a>
+            <nav>
+                <a href="basket.html">
+                    Basket
+                </a> 
+                <a href="checkout.html">
+                    Checkout
+                </a> 
+                <a href="contact.html">
+                    Contact
+                </a> 
+                <a href="wishlist.html">
+                    Wish List
+                </a>  
+            </nav> 
+        </header>
+
+        <h2 style = "margin: 30px">
+            <u>Total:</u>
+            <br>
+            <p id = "product-price"></p>
+        </h2>
+
+        <h3 style = "margin: 30px">
+            Products:
+        </h3>
+
+        <div class = "checkout-product-grid">
+            <div class = "product-card">
+                <img src = "" id = "product-image">
+                <div class = "product-info">
+                    <h3 id = "product-name"></h3>
+                </div>
+            </div>
+        </div>
+
+        <div style = "margin: 30px">
+            <a href = "payment-details.html" class = "submit-button">
+                Confirm
+            </a>
+        </div>
+        <script>
+            const products = {
+                1: {
+                    name: "Wooden Toothbrush",
+                    price: "R100.00",
+                    image: "../Images/toothbrush.png",
+                    description: "Resuable toothbrush that is made out of wood."
+                },
+
+                2: {
+                    name: "Metal Waterbottle",
+                    price: "R500.00",
+                    image: "../Images/waterbottle.png",
+                    description: "Metal waterbottle with a sleek wooden finish."
+                },
+
+                3: {
+                    name: "Wooden Utensil Set",
+                    price: "R105.00",
+                    image: "../Images/utensils.png",
+                    description: "Resuable and dishwasher friendly wooden utensils."
+                },
+
+                4: {
+                    name: "Bamboo Chopsticks Set",
+                    price: "R100.00",
+                    image: "../Images/chopsticks.png",
+                    description: "Resuable bamboo chopsticks."
+                },
+
+                5: {
+                    name: "Soy Candle",
+                    price: "R500.00",
+                    image: "../Images/candle.png",
+                    description: "Vanilla scented soy candle. Perfect as an air freshener."
+                },
+
+                6: {
+                    name: "Reusable Produce Bags",
+                    price: "R105.00",
+                    image: "../Images/bags.png",
+                    description: "Resuable produce bags that are perfect for grocery shopping."
+                },
+
+                7: {
+                    name: "Barrel Couch",
+                    price: "R1000.00",
+                    image: "../Images/couch.png",
+                    description: "Barrel that was repurposed to be a couch."
+                },
+
+                8: {
+                    name: "Tote Bag",
+                    price: "R250.00",
+                    image: "../Images/totebag.png",
+                    description: "Tote bag made from upcycled material."
+                },
+
+                9: {
+                    name: "Desk Organizer",
+                    price: "R175.00",
+                    image: "../Images/organizer.png",
+                    description: "Upcycled plastic that was repurposed to be a desk organizer."
+                },
+            };
+        
+            const parameters = new URLSearchParams(window.location.search);
+            const id = parameters.get("id");
+            const product = products[id];
+
+            const emptyBasket = document.getElementById("empty-basket");
+
+            //variable that finds the CSS element specified
+            const productCard = document.querySelector(".product-card");
+            const buttonCard = document.querySelector(".product-button-card");
+
+            if(!product || !id) {
+                //styling methods
+                emptyBasket.style.display = "flex";
+                productCard.style.display = "none";
+                buttonCard.style.display = "none";
+            }
+            else {
+                document.getElementById("product-image").src = product.image;
+                document.getElementById("product-name").textContent = product.name;
+                document.getElementById("product-price").textContent = product.price;
+            }
+        </script>
+    </body>
+</html>

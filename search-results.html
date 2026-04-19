@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang = "en">
+    <head>
+        <title>
+            Search Results
+        </title>
+        <link rel="stylesheet" href = "../CSS/styling.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <header>
+        <a href = "index.html">
+            <img src = "../Images/logo.png" alt = "Company Logo" style = "width: 50px; height: auto">
+        </a>
+
+        <nav>
+            <a href="basket.html">
+                Basket
+            </a> 
+            <a href="checkout.html">
+                Checkout
+            </a> 
+            <a href="contact.html">
+                Contact
+            </a> 
+            <a href="wishlist.html">
+                Wish List
+            </a>  
+        </nav> 
+    </header>
+
+    <h2 style = "text-align:center; margin:20px 0;">
+        Search Result
+    </h2>
+
+    <div class="product-grid" id="resultsGrid"></div>
+    <body>
+        <script>
+            const products = [
+                {
+                    name: "Wooden Toothbrush", 
+                    price: "R100.00", 
+                    image: "../Images/toothbrush.png", 
+                    stars: "★ ★ ★ ☆ ☆", 
+                    ratingValue: "3.0", 
+                    ratingCount: "150 Ratings",
+                    id: "1"
+                },
+                {
+                    name: "Metal Waterbottle", 
+                    price: "R500.00", 
+                    image: "../Images/waterbottle.png", 
+                    stars: "★ ★ ★ ☆ ☆", 
+                    ratingValue: "3.0", 
+                    ratingCount: "150 Ratings",
+                    id: "2"
+                },
+                {
+                    name: "Wooden Utensil Set", 
+                    price: "R105.00", 
+                    image: "../Images/utensils.png", 
+                    stars: "★ ★ ★ ☆ ☆", 
+                    ratingValue: "3.0", 
+                    ratingCount: "150 Ratings",
+                    id: "3"
+                },
+                {
+                    name: "Bamboo Chopsticks Set", 
+                    price: "R100.00", 
+                    image: "../Images/chopsticks.png", 
+                    stars: "★ ★ ★ ☆ ☆", 
+                    ratingValue: "3.0", 
+                    ratingCount: "150 Ratings",
+                    id: "4"
+                },
+                {
+                    name: "Soy Candle", 
+                    price: "R500.00", 
+                    image: "../Images/candle.png", 
+                    stars: "★ ★ ★ ☆ ☆", 
+                    ratingValue: "3.0", 
+                    ratingCount: "150 Ratings",
+                    id: "5"
+                },
+                {
+                    name: "Reusable Produce Bags", 
+                    price: "R105.00", 
+                    image: "../Images/bags.png", 
+                    stars: "★ ★ ★ ☆ ☆", 
+                    ratingValue: "3.0", 
+                    ratingCount: "150 Ratings",
+                    id: "6"
+                },
+                {
+                    name: "Barrel Couch", 
+                    price: "R1000.00", 
+                    image: "../Images/couch.png", 
+                    stars: "★ ★ ★ ☆ ☆", 
+                    ratingValue: "3.0", 
+                    ratingCount: "150 Ratings",
+                    id: "7"
+                },
+                {
+                    name: "Tote Bag", 
+                    price: "R250.00", 
+                    image: "../Images/totebag.png", 
+                    stars: "★ ★ ★ ☆ ☆", 
+                    ratingValue: "3.0", 
+                    ratingCount: "150 Ratings",
+                    id: "8"
+                },
+                {
+                    name: "Desk Organizer", 
+                    price: "R105.00", 
+                    image: "../Images/organizer.png", 
+                    stars: "★ ★ ★ ☆ ☆", 
+                    ratingValue: "3.0", 
+                    ratingCount: "150 Ratings",
+                    id: "9"
+                },
+            ];
+            //AI gave me the idea to use a 'custom' URL
+            const query = new URLSearchParams(window.location.search).get('q').toLowerCase();
+            const resultsGrid = document.getElementById("resultsGrid");
+            
+            //loop to find products
+            products.forEach(item => {
+                if(item.name.toLowerCase().includes(query)) {
+                    //AI was used here to assist me in how I can display the correct information
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+                    //HTML stlying
+                    card.innerHTML = `
+                        <a href = "product-details.html?id=${item.id}" style = "text-align: center;">
+                            <img src="${item.image}" alt="${item.name}">
+                        </a>
+                        <div class="product-info">
+                            <h3>
+                                ${item.name}
+                            </h3>
+                            <p>
+                                <strong>
+                                    ${item.price}
+                                </strong>
+                            </p>
+                            <div class="rating">
+                                <span class="stars">
+                                    ${item.stars}
+                                </span>
+                                <span class="rating-value">
+                                    ${item.ratingValue}
+                                </span>
+                                <span class="rating-count">
+                                    ${item.ratingCount}
+                                </span>
+                            </div>
+                        </div>
+                    `;
+                    resultsGrid.appendChild(card);
+                }
+            });
+
+            if(resultsGrid.childElementCount === 0) {
+                resultsGrid.innerHTML = `<p style="text-align:center;">No products found for "${query}"</p>`;
+            }
+        </script>
+    </body>
+</html>
